@@ -1,5 +1,6 @@
 package br.com.zup.user_manager.user_manager.controllers;
 
+import br.com.zup.user_manager.user_manager.dtos.RegisterUserDTO;
 import br.com.zup.user_manager.user_manager.models.UserModel;
 import br.com.zup.user_manager.user_manager.dtos.UserLoginDTO;
 import br.com.zup.user_manager.user_manager.services.UserService;
@@ -19,8 +20,8 @@ public class UserController {
     private UserService userService;
 
     @PostMapping
-    public UserModel registerUser(@RequestBody UserModel user){
-        return userService.saveUser(user);
+    public void registerUser(@RequestBody RegisterUserDTO registerUserDTO){
+        return userService.saveUser(registerUserDTO);
     }
 
     @PostMapping("/login")
