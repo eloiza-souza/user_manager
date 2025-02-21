@@ -1,4 +1,4 @@
-package br.com.zup.user_manager.user_manager.repositories;
+package br.com.zup.user_manager.user_manager.dtos;
 
 public class UserLoginDTO {
     private String userName;
