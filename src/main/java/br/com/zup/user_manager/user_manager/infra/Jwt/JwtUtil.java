@@ -1,4 +1,4 @@
-package br.com.zup.user_manager.user_manager.infra;
+package br.com.zup.user_manager.user_manager.infra.Jwt;
 
 import java.util.Date;
 import java.util.Map;
