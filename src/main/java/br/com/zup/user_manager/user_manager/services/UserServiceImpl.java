@@ -29,22 +29,6 @@ public class UserServiceImpl implements UserService {
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
 
-    public void registerUser(RegisterUserDTO registerUserDTO) {
-        if (userRepository.existsByUserName(registerUserDTO.getUserName())) {
-            throw new RuntimeException("Unprocess Entity");
-        }
-        UserModel user = new UserModel();
-        user.setUserName(registerUserDTO.getUserName());
-        user.setPassword(bCryptPasswordEncoder.encode(registerUserDTO.getPassword()));
-        Set<Role> roles = registerUserDTO.getRoles().stream()
-                .map(rolesEnum -> new Role(rolesEnum.name()))
-                .collect(Collectors.toSet());
-        roleRepository.saveAll(roles);
-
-        user.setRoles(roles);
-        userRepository.save(user);
-    }
-
     public UserModel saveUser(UserModel user) {
         String passwordEncoder = bCryptPasswordEncoder.encode(user.getPassword());
         user.setPassword(passwordEncoder);
@@ -61,6 +45,22 @@ public class UserServiceImpl implements UserService {
             return Map.of("mensagem:", "senha invalida");
         }
         return Map.of("mensagem:", "userName invalido");
+    }
+
+    public void registerUser(RegisterUserDTO registerUserDTO) {
+        if (userRepository.existsByUserName(registerUserDTO.getUserName())) {
+            throw new RuntimeException("Unprocess Entity");
+        }
+        UserModel user = new UserModel();
+        user.setUserName(registerUserDTO.getUserName());
+        user.setPassword(bCryptPasswordEncoder.encode(registerUserDTO.getPassword()));
+        Set<Role> roles = registerUserDTO.getRoles().stream()
+                .map(rolesEnum -> new Role(rolesEnum.name()))
+                .collect(Collectors.toSet());
+        roleRepository.saveAll(roles);
+
+        user.setRoles(roles);
+        userRepository.save(user);
     }
 }
 
