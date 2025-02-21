@@ -1,4 +1,4 @@
-package br.com.zup.user_manager.user_manager.infra.security;
+package br.com.zup.user_manager.user_manager.infra;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -29,4 +29,6 @@ public class SecurityConfig {
     public PasswordEncoder bCryptPasswordEncoder(){
         return new BCryptPasswordEncoder();
     }
+
+
 }
