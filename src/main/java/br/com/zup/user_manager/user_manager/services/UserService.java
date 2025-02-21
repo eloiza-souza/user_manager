@@ -10,7 +10,7 @@ public interface UserService {
 
     Map<String, String> login(UserLoginDTO userLoginDTO);
 
-    UserModel saveUser(UserModel user);
+
 
     void registerUser(RegisterUserDTO registerUserDTO);
 }

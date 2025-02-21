@@ -29,11 +29,6 @@ public class UserServiceImpl implements UserService {
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
 
-    public UserModel saveUser(UserModel user) {
-        String passwordEncoder = bCryptPasswordEncoder.encode(user.getPassword());
-        user.setPassword(passwordEncoder);
-        return userRepository.save(user);
-    }
 
     public Map<String, String> login(UserLoginDTO userLoginDTO) {
         Optional<UserModel> userOptional = userRepository.findByUserName(userLoginDTO.getUserName());

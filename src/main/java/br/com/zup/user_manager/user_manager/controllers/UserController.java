@@ -21,7 +21,8 @@ public class UserController {
 
     @PostMapping
     public void registerUser(@RequestBody RegisterUserDTO registerUserDTO){
-        return userService.saveUser(registerUserDTO);
+
+       userService.registerUser(registerUserDTO);
     }
 
     @PostMapping("/login")
